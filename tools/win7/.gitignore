@@ -1,0 +1,7 @@
+# 构建日志与审计输出（本地生成，不入库）
+build.log
+imports-report.txt
+_run.out.txt
+_run.err.txt
+_lto.out.txt
+_lto.err.txt

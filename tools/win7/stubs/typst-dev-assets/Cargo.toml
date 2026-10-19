@@ -1,0 +1,18 @@
+# 仅用于 win7 构建的依赖解析占位包。
+#
+# typst-dev-assets 只在各 crate 的 dev-dependencies 中出现（集成测试用），
+# 但 cargo 解析整个 workspace 时仍会 clone 对应的 git 仓库。
+# 在没有 GitHub 访问能力的环境下，用这个空包通过 [patch] 顶替它：
+# dev-dependencies 不会进入 typst-cli 的产物，因此不影响二进制内容。
+
+[workspace]
+
+[package]
+name = "typst-dev-assets"
+version = "0.15.1"
+edition = "2021"
+description = "Local stub for typst-dev-assets, used only for dependency resolution."
+license = "Apache-2.0"
+
+[lib]
+path = "src/lib.rs"

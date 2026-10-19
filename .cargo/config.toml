@@ -12,3 +12,16 @@ testit = "run --quiet --package=test-wrapper --"
 # compilation speed. Just `dev` makes the Typst compilation very slow, while
 # `release` makes the Rust compilation very slow.
 docit = "run --profile dev-fast --package=typst-docs --"
+
+# Windows 7 兼容构建（tools/win7/README.md）。
+#
+# 仅作用于以 Windows 7 为基线的 Tier 3 目标，不影响默认目标
+# （x86_64-pc-windows-msvc）以及 CI 的普通构建。
+# 静态链接 CRT，避免 Windows 7 上依赖特定版本的 VC++ Redistributable。
+
+[target.x86_64-win7-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
+[target.i686-win7-windows-msvc]
+rustflags = ["-C", "target-feature=+crt-static"]
+
